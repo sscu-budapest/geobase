@@ -1,1 +1,4 @@
 datazimmer
+geopandas
+pyrosm
+h3pandas
