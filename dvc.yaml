@@ -1,0 +1,8 @@
+stages:
+  complete-nuts:
+    cmd: datazimmer run-step complete-nuts
+    deps:
+    - src/nuts.py
+    outs:
+    - data/geobase/nuts/complete:
+        persist: true

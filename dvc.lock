@@ -1,0 +1,13 @@
+schema: '2.0'
+stages:
+  complete-nuts:
+    cmd: datazimmer run-step complete-nuts
+    deps:
+    - path: src/nuts.py
+      md5: 1f08edb695c4b36a44ae04a02ad79093
+      size: 2160
+    outs:
+    - path: data/geobase/nuts/complete
+      md5: a3bbf35d646a269c5f54accfb4bee86a.dir
+      size: 68796628
+      nfiles: 3
