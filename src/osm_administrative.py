@@ -1,4 +1,5 @@
 from functools import partial
+from multiprocessing import cpu_count
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
@@ -35,7 +36,11 @@ def load_osm_admin():
             for a in continent_soup.find_all("a", text="[.osm.pbf]")
         ]
 
-    parallel_map(partial(proc_country_link, table=osm_admin_table), set(country_links))
+    parallel_map(
+        partial(proc_country_link, table=osm_admin_table),
+        set(country_links),
+        workers=min(cpu_count() // 2, 20),
+    )
 
 
 def proc_country_link(country_link, table: dz.ScruTable):
