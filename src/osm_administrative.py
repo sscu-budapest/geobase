@@ -1,3 +1,4 @@
+from functools import partial
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
@@ -34,7 +35,7 @@ def load_osm_admin():
             for a in continent_soup.find_all("a", text="[.osm.pbf]")
         ]
 
-    parallel_map(proc_country_link, set(country_links))
+    parallel_map(partial(proc_country_link, table=osm_admin_table), set(country_links))
 
 
 def proc_country_link(country_link, table: dz.ScruTable):
